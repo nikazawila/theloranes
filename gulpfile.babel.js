@@ -1,6 +1,7 @@
 // generated on 2015-12-04 using generator-gulp-webapp 1.0.3
 import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
+import ghPages from 'gulp-gh-pages';
 import browserSync from 'browser-sync';
 import del from 'del';
 import {stream as wiredep} from 'wiredep';
@@ -153,6 +154,11 @@ gulp.task('wiredep', () => {
       ignorePath: /^(\.\.\/)*\.\./
     }))
     .pipe(gulp.dest('app'));
+});
+
+gulp.task('deploy', () => {
+  gulp.src('./dist/**/*')
+    .pipe(ghPages());
 });
 
 gulp.task('build', ['html', 'images', 'fonts', 'extras'], () => {
