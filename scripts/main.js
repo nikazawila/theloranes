@@ -1,0 +1,1 @@
+lightbox.option({resizeDuration:400,fadeDuration:400});
