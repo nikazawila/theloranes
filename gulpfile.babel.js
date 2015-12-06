@@ -78,6 +78,12 @@ gulp.task('fonts', () => {
     .pipe(gulp.dest('dist/fonts'));
 });
 
+gulp.task('downloads', () => {
+  return gulp.src([
+    'downloads/*.*'
+  ]).pipe(gulp.dest('dist'));
+});
+
 gulp.task('extras', () => {
   return gulp.src([
     'app/CNAME',
@@ -161,7 +167,7 @@ gulp.task('wiredep', () => {
     .pipe(gulp.dest('app'));
 });
 
-gulp.task('build', ['html', 'images', 'fonts', 'extras'], () => {
+gulp.task('build', ['html', 'images', 'fonts', 'downloads', 'extras'], () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
