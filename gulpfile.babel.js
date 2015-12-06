@@ -70,18 +70,21 @@ gulp.task('images', () => {
     .pipe(gulp.dest('dist/images'));
 });
 
+gulp.task('downloads', () => {
+  return gulp.src('app/downloads/**/*')
+    .on('error', function (err) {
+      console.log(err);
+      this.end();
+    })
+    .pipe(gulp.dest('dist/downloads'));
+});
+
 gulp.task('fonts', () => {
   return gulp.src(require('main-bower-files')({
     filter: '**/*.{eot,svg,ttf,woff,woff2}'
   }).concat('app/fonts/**/*'))
     .pipe(gulp.dest('.tmp/fonts'))
     .pipe(gulp.dest('dist/fonts'));
-});
-
-gulp.task('downloads', () => {
-  return gulp.src([
-    'app/downloads/*.*'
-  ]).pipe(gulp.dest('dist'));
 });
 
 gulp.task('extras', () => {
