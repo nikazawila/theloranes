@@ -87,6 +87,11 @@ gulp.task('extras', () => {
   }).pipe(gulp.dest('dist'));
 });
 
+gulp.task('deploy', () => {
+  return gulp.src('./dist/**/*')
+    .pipe($.ghPages());
+});
+
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
 gulp.task('serve', ['styles', 'fonts'], () => {
@@ -153,11 +158,6 @@ gulp.task('wiredep', () => {
       ignorePath: /^(\.\.\/)*\.\./
     }))
     .pipe(gulp.dest('app'));
-});
-
-gulp.task('deploy', () => {
-  gulp.src('./dist/**/*')
-    .pipe($.ghPages());
 });
 
 gulp.task('build', ['html', 'images', 'fonts', 'extras'], () => {
