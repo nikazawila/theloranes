@@ -1,0 +1,51 @@
+// --- shows -------------------------------------------------------------------
+
+.shows {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  &__item {
+    margin-bottom: 20px;
+  }
+
+  &__link {
+    @include clearfix;
+  }
+
+  &__date {
+    float: left;
+    width: 100px;
+    background-color: $color--link;
+    padding: 14px 0;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  &__city-venue {
+    @extend %ellipsis;
+    float: left;
+    width: calc(100% - 100px);
+    background-color: #222222;
+    box-sizing: border-box;
+    padding: 14px 18px;
+  }
+
+  &__city {
+    padding-right: 14px;
+    display: inline-block;
+  }
+
+  &__link--more {
+    float: right;
+    color: $color--link;
+  }
+}
+
+// --- shows: past -------------------------------------------------------------
+
+.shows--past {
+  .shows__date {
+    background-color: $color--past;
+  }
+}

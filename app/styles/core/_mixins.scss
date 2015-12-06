@@ -1,0 +1,53 @@
+// --- clearfix ----------------------------------------------------------------
+
+@mixin clearfix {
+  &:after {
+    display: table;
+    content: '';
+    clear: both;
+    // Fixes Opera/contenteditable bug:
+    // http://nicolasgallagher.com/micro-clearfix-hack/#comment-36952
+    line-height: 0;
+  }
+}
+
+// --- mixins: media queries ---------------------------------------------------
+// based on: https://github.com/paranoida/sass-mediaqueries/
+
+@mixin screen($res-min, $res-max) {
+  @media screen and (min-width: $res-min) and (max-width: $res-max) {
+    @content;
+  }
+}
+
+@mixin max-screen($res) {
+  @media screen and (max-width: $res) {
+    @content;
+  }
+}
+
+@mixin min-screen($res) {
+  @media screen and (min-width: $res) {
+    @content;
+  }
+}
+
+@mixin max-screen-height($res-max) {
+  @media screen and (max-height: $res-max) {
+    @content;
+  }
+}
+
+// aliases
+
+@mixin tablet {
+  @include max-screen($breakpoint--medium) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @include max-screen($breakpoint--small) {
+    @content;
+  }
+}
