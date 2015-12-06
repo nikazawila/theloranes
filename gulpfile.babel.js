@@ -80,7 +80,7 @@ gulp.task('fonts', () => {
 
 gulp.task('downloads', () => {
   return gulp.src([
-    'downloads/*.*'
+    'app/downloads/*.*'
   ]).pipe(gulp.dest('dist'));
 });
 
