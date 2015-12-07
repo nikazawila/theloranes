@@ -54,6 +54,14 @@ gulp.task('html', ['styles'], () => {
     .pipe(gulp.dest('dist'));
 });
 
+gulp.task('html-pages', ['styles'], () => {
+  const assets = $.useref.assets({searchPath: ['.tmp', 'app', '.']});
+
+  return gulp.src('app/tl/*.html')
+    .pipe($.if('*.html', $.minifyHtml({conditionals: true, loose: true})))
+    .pipe(gulp.dest('dist/tl'));
+});
+
 gulp.task('images', () => {
   return gulp.src('app/images/**/*')
     .pipe($.if($.if.isFile, $.cache($.imagemin({
@@ -118,6 +126,7 @@ gulp.task('serve', ['styles', 'fonts'], () => {
 
   gulp.watch([
     'app/*.html',
+    'app/tl/*.html',
     'app/scripts/**/*.js',
     'app/images/**/*',
     '.tmp/fonts/**/*'
@@ -170,7 +179,7 @@ gulp.task('wiredep', () => {
     .pipe(gulp.dest('app'));
 });
 
-gulp.task('build', ['html', 'images', 'fonts', 'downloads', 'extras'], () => {
+gulp.task('build', ['html', 'html-pages', 'images', 'fonts', 'downloads', 'extras'], () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
