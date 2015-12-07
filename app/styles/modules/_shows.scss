@@ -6,11 +6,8 @@
   list-style: none;
 
   &__item {
-    margin-bottom: 20px;
-  }
-
-  &__link {
     @include clearfix;
+    margin-bottom: 20px;
   }
 
   &__date {
