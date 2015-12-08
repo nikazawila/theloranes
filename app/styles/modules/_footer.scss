@@ -71,6 +71,8 @@
 
 .footer {
   @include tablet {
+    position: static;
+    
     &__brands {
       width: 100%;
       text-align: center;
