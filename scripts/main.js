@@ -1,1 +1,1 @@
-lightbox.option({resizeDuration:400,fadeDuration:400});
+) __ESCAPED_SOURCE_END_CLEAN_CSS__
